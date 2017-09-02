@@ -1,0 +1,24 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides: myrhatmonitor
+# Required-Start: $all $remote_fs $network $local_fs 
+# Required-Stop: $remote_fs
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Virtual Splunk server
+### END INIT INFO
+
+case "$1" in
+ start)
+    echo "starting rhat1"
+    su -l jarvis -c 'vboxmanage startvm --type headless rhat1'
+    ;;
+ stop)
+    echo "terminating rhat1"
+    su -l jarvis -c 'vboxmanage controlvm rhat1 poweroff'
+    ;;
+*)
+        echo "Usage: ./myrhatmonitor {start|stop}" >&2
+       exit 3
+       ;; 
+esac 

@@ -3,7 +3,6 @@
   tasks:
   - name: checking disk space
     shell: df -h
-    register: size
-  - debug: msg="{{ size.stdout }}"
+
   
   

@@ -1,14 +1,6 @@
 ---
-- hosts: all
-  become: yes
-  tasks:
-    - name: Touch test file
-      file:
-        path: /tmp/deleteme.conf
-        state: touch
-        mode: 0755
-         
-    - name: Delete test file
-      file:
-        path: /tmp/deleteme.conf
-        state: absent
+- name: Add & Enable EPEL
+  yum:
+    name: epel-release
+    state: present
+  become: True

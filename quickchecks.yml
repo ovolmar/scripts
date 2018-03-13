@@ -4,11 +4,11 @@
   tasks:
     - name: Touch test file
       file:
-      path: /tmp/deleteme.conf
-      state: touch
-      mode: 0755
+        path: /tmp/deleteme.conf
+        state: touch
+        mode: 0755
          
     - name: Delete test file
       file:
-      path: /tmp/deleteme.conf
-      state: absent
+        path: /tmp/deleteme.conf
+        state: absent

@@ -2,7 +2,7 @@
   hosts: all
   tasks:
     - name: CREATE A TEST FILE
-        file:
-            path: /tmp/deleteme.conf
-            state: touch
-            mode: 0755
+      file:
+        path: /tmp/deleteme.conf
+        state: touch
+        mode: 0755

@@ -10,4 +10,5 @@
          
      - name: Delete test file
        file:
-         path: 
+         path: /tmp/deleteme.conf
+         state: absent

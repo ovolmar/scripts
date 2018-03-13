@@ -1,8 +1,13 @@
-- name: TESTING AUTH
-  hosts: all
-  tasks:
-    - name: CREATE A TEST FILE
-      file:
-        path: /tmp/deleteme.conf
-        state: touch
-        mode: 0755
+---
+ - hosts: all
+   become: yes
+   tasks:
+     - name: Touch test file
+       file:
+         path: /tmp/deleteme.conf
+         state: touch
+         mode: 0755
+         
+     - name: Delete test file
+       file:
+         path: 

@@ -1,8 +1,6 @@
----
-- hosts: all
+- name: Quick test
+  hosts: htpc
   tasks:
-  - name: checking disk space
-    shell: df -h
-
-  
-  
+    - name: Testing Authentication
+      debug:
+        msg: " This is a test. PASSED!!!! "

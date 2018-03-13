@@ -1,14 +1,14 @@
 ---
- - hosts: all
-   become: yes
-   tasks:
-     - name: Touch test file
-       file:
-         path: /tmp/deleteme.conf
-         state: touch
-         mode: 0755
+- hosts: all
+  become: yes
+  tasks:
+    - name: Touch test file
+      file:
+      path: /tmp/deleteme.conf
+      state: touch
+      mode: 0755
          
-     - name: Delete test file
-       file:
-         path: /tmp/deleteme.conf
-         state: absent
+    - name: Delete test file
+      file:
+      path: /tmp/deleteme.conf
+      state: absent

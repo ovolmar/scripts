@@ -1,6 +1,7 @@
-- name: Quick test
-  hosts: htpc
+- name: TESTING AUTH
+  hosts: all
   tasks:
-    - name: Testing Authentication
-      debug:
-        msg: " This is a test. PASSED!!!! "
+    - name: CREATE A TEST FILE
+      path: /tmp/deleteme.conf
+      state: touch
+      mode: 0755

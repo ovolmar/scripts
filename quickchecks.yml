@@ -5,4 +5,9 @@
   - name: Check FileSystem
     shell: df -h
     register: fs_space
-    debug: msg="{{ fs_space.stdout }}"
+  - debug: msg="{{ fs_space.stdout }}"
+  - name: Kernel Check
+    shell: uname -r
+    register: kernel
+  - debug: msg="{{ kernel.stdout }}"
+  

@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  gather_facts: No
   become: True
   tasks:
   - name: Check FileSystem

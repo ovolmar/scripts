@@ -5,9 +5,12 @@
   - name: Check FileSystem
     shell: df -h
     register: fs_space
+    ignore_errors: yes
   - debug: msg="{{ fs_space.stdout }}"
+    
   - name: Kernel Check
     shell: uname -r
     register: kernel
+    ignore_errors: yes
   - debug: msg="{{ kernel.stdout }}"
   

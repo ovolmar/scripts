@@ -4,3 +4,5 @@
   tasks:
   - name: Check FileSystem
     shell: df -h
+    register: fs_space
+    debug: msg="{{ fs_space.stdout }}"

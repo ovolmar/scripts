@@ -5,10 +5,4 @@
   tasks:
   - name:
     shell: df -h
-    register: space
-  - debug: msg="{{ space.stdout }}"
 
-  - name: Kernel Check
-    shell: uname -r
-    register: kernel
-  - debug: msg="{{ kernel.stdout}}"

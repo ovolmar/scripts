@@ -3,7 +3,5 @@
   gather_facts: No
   become: True
   tasks:
-  - name: Add & Enable EPEL
-    yum:
-    name: epel-release
-    state: present
+  - name: Check FileSystem
+    shell: df -h

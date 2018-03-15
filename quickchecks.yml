@@ -1,16 +1,14 @@
 ---
 - hosts: all
   become: True
+
   tasks:
-  - name: Check FileSystem
+  - name:
     shell: df -h
-    register: fs_space
-    ignore_errors: yes
-  - debug: msg="{{ fs_space.stdout }}"
-    
+    register: space
+  - debug: msg="{{ space.stdout }}"
+
   - name: Kernel Check
     shell: uname -r
     register: kernel
-    ignore_errors: yes
-  - debug: msg="{{ kernel.stdout }}"
-  
+  - debug: msg="{{ kernel.stdout}}"

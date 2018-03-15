@@ -1,6 +1,9 @@
 ---
-- name: Add & Enable EPEL
-  yum:
+- hosts:
+  gather_facts: No
+  become: True
+  tasks:
+  - name: Add & Enable EPEL
+    yum:
     name: epel-release
     state: present
-  become: True

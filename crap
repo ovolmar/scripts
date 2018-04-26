@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: True
+  gather_facts: False
+  tasks:
+  - name: create directory to deploy ssh keys
+    file:
+      path: "/root/.ssh"
+      state: directory
+    register:
+  - name: create empty file
+    file: "/root/.ssh/authorized_keys"
+    state: touch
+
+  - name: get and put the key on the right place
+    path:

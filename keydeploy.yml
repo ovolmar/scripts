@@ -1,4 +1,7 @@
 ---
+# Make sure to ask for password <--ask-pass>
+# And point to the public key <--extra-vars "pubkey=~/.ssh/id_rsa.pub"
+
 - hosts: all
   become: True
   vars:

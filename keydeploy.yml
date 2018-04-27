@@ -1,16 +1,21 @@
 ---
 - hosts: all
   become: True
+  vars:
+    sshpath: "/root/.ssh"
   gather_facts: False
   tasks:
   - name: create directory to deploy ssh keys
     file:
-      path: "/root/.ssh"
+      path: "{{ sshpath }}"
       state: directory
-    register:
+
   - name: create empty file
-    file: "/root/.ssh/authorized_keys"
-    state: touch
+    file:
+      path: "{{sshpath}}/authorized_keys"
+      state: touch
 
   - name: get and put the key on the right place
-    path:
+    lineinfile:
+      path: "{{sshpath}}/authorized_keys"
+      line: "{{ pubkey }}"

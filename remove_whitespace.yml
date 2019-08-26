@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  tasks:
+  - name: Removing whitespace for SCAP compliance
+    replace:
+      path: '{{item}}'
+      regexp: '\s= '
+      replace: '='
+    with_items:
+      - /etc/dconf/db/local.d/00-security-settings
+      - /etc/sysctl.conf

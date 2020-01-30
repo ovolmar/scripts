@@ -1,0 +1,27 @@
+---
+  - name: Updating host file 
+    hosts: all
+    gather_facts: yes
+    vars: 
+      domain: .dev.net
+      hostfile: '/home/ninja1/automation/hosts'
+    tasks:
+    - name: Update the /etc/hosts file with node name
+      become: yes
+      become_user: root
+      lineinfile:
+        path: "{{ hostfile }}"
+        regexp: ".*\t{{ hostvars[item]['ansible_hostname']}}\t{{ hostvars[item]['ansible_hostname']}}"
+        line: "{{ ansible_default_ipv4.address }}\t{{ hostvars[item]['ansible_hostname'] }}{{domain}}\t{{ hostvars[item]['ansible_hostname']}}"
+        state: present
+        backup: yes
+      #when: ansible_hostname != "{{ item }}" or ansible_hostname == "{{ item }}"
+      with_items: "{{groups['all']}}"
+    
+    - name: Cleaning ipv6 from host file
+      lineinfile:
+        path: "{{ hostfile }}"
+        regexp: "(?:ip*6)"
+        state: absent
+        firstmatch: yes
+      tags: ['ipv6']
